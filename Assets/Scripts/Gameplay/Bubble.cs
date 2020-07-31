@@ -28,10 +28,12 @@ public class Bubble : MonoBehaviour
             transform.Translate(currentMovement * Time.deltaTime);
             if (Mathf.Abs(transform.position.x) >= GameSettings.instance.halfScreenWidthInUnits)
             {
+                transform.position.Set((GameSettings.instance.halfScreenWidthInUnits - GameSettings.instance.bubbleRadius) * Mathf.Sign(transform.position.x), transform.position.y, 0);
                 currentMovement.Set(-currentMovement.x, currentMovement.y, 0);
             }
             if (transform.position.y >= GameSettings.instance.halfScreenHeightInUnits + HoneycombGrid.instance.yOffset)
             {
+                transform.position.Set(transform.position.y, GameSettings.instance.halfScreenHeightInUnits - GameSettings.instance.bubbleRadius, 0);
                 currentMovement.Set(currentMovement.x, -currentMovement.y, 0);
             }
             yield return null;

@@ -88,16 +88,6 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-    public void Exit()
-    {
-        
-    }
-
-    public void Retry()
-    {
-        
-    }
-
     public void Win()
     {
         StartCoroutine(ShowWinResult());
@@ -111,7 +101,7 @@ public class GameSettings : MonoBehaviour
     IEnumerator ShowLoseResult()
     {
         yield return new WaitForSecondsRealtime(1.5f);
-        int highscore = PlayerPrefs.GetInt("Highscore", score);
+        int highscore = PlayerPrefs.GetInt("Highscore");
         if (score > highscore)
         {
             PlayerPrefs.SetInt("Highscore", score);
@@ -135,7 +125,7 @@ public class GameSettings : MonoBehaviour
     IEnumerator ShowWinResult()
     {
         yield return new WaitForSecondsRealtime(1.6f);
-        int highscore = PlayerPrefs.GetInt("Highscore", score);
+        int highscore = PlayerPrefs.GetInt("Highscore");
         if (score > highscore)
         {
             PlayerPrefs.SetInt("Highscore", score);
